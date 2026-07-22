@@ -1,18 +1,11 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 
 using namespace std;
 
-/* Mutiplos de un numero: 
+/* Múltiplos de un número: 
 Pedir un número 
-y mostrar los primeros 5 múltiplos de ese numero */
+y mostrar
+los primeros 5 múltiplos de ese numero */
 
 
 int main()
