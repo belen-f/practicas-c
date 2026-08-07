@@ -33,7 +33,7 @@ void filtrarPorAño (Libro listaLibros[], int longitud);
 
 
 int main(){
-    const int longitud = 3;
+    const int longitud = 15;
     Libro listaLibros[longitud];
     
     //Crear lista de libros
