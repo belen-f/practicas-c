@@ -1,0 +1,108 @@
+/*   
+Biblioteca de guardia:
+Se registran hasta 15 libros en una biblioteca nocturna. 
+De cada libro se guarda:
+-titulo(string)
+-autor(string)
+-año de publicacion(int)
+-cantidad de ejemplares(int)
+
+1)Cargar los datos de libros.
+2)Hacer una función que muestre todos los libros con más de 3 ejemplares.
+3)Hacer una función que devuelva cuántos libros son anteriores al año 2000.
+
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//Declaro struct
+struct Libro {
+    string titulo;
+    string autor;
+    int añoDePublicacion;
+    int ejemplares;
+};
+//Declarar funcion que filtre más de tres ejemplares
+void filtrarPorEjemplares (Libro listaLibros[], int longitud);
+
+//Declarar funcion que filtre años anteriores al 2000
+void filtrarPorAño (Libro listaLibros[], int longitud);
+
+
+int main(){
+    const int longitud = 3;
+    Libro listaLibros[longitud];
+    
+    //Crear lista de libros
+    cout << "----REGISTRAR DATOS DE LOS LIBROS----"<<endl;
+    for (int i=0; i<longitud ; i++){
+        
+        Libro libro;
+        
+        cout << "Ingrese título del libro "<<i+1<<":"<<endl;
+        getline(cin,libro.titulo);
+        cout << "Ingrese autor del libro "<<i+1<<":"<<endl;
+        getline(cin,libro.autor);
+        cout << "Ingrese año de publicacion del libro "<<i+1<<":"<<endl;
+        cin>>libro.añoDePublicacion;
+        cout << "Ingrese cantidad de ejemplares del libro "<<i+1<<":"<<endl;
+        cin>>libro.ejemplares;
+        
+        cin.ignore();
+        //agregar libro ingresado a la lista
+        listaLibros[i] = libro;
+    };
+    
+    //Mostrar lista de libros con más de tres ejemplares
+    filtrarPorEjemplares(listaLibros,longitud);
+    
+    //Mostrar cantidad de libros que son anteriores al año 2000
+    filtrarPorAño(listaLibros,longitud);
+    
+    return 0;
+};
+
+//definir función que filtre más de tres ejemplares
+void filtrarPorEjemplares (Libro listaLibros[], int longitud){
+    
+    bool encontrado = false;
+    
+    cout<<"----LIBROS CON MÁS DE TRES EJEMPLARES----"<<endl;
+    for (int i=0 ; i<longitud ; i++) {
+        if (listaLibros[i].ejemplares > 3){
+            cout<<"Título :"<<listaLibros[i].titulo<<endl;
+            cout<<"Cantidad de ejemplares :"<<listaLibros[i].ejemplares<<endl;
+            encontrado = true;
+        };
+    };
+    if (!encontrado){
+        cout<<"No hay libros con más de tres ejemplares."<<endl;
+    };
+};
+
+
+//definir función que filtre años anteriores a los 2000
+
+void filtrarPorAño (Libro listaLibros[], int longitud){
+    bool encontrado= false;
+    int suma = 0;
+    
+    cout<<"----LIBROS PUBLICADOS ANTES DEL AÑO 2000----"<<endl;
+    for (int i=0 ; i<longitud; i++){
+        if (listaLibros[i].añoDePublicacion < 2000){
+           suma++;
+           encontrado= true;
+        }
+    };
+    if (!encontrado){
+        cout<<"No hay libros anteriores al año 2000."<<endl;
+    } else {
+        cout<<"Cantidad total: "<<suma<<endl;
+    };
+    
+};
+
+ //Notas: No valida tipos de datos.
